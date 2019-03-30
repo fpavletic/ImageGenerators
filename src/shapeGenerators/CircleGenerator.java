@@ -1,10 +1,6 @@
 package shapeGenerators;
 
-import imageGenerator.ImageGenerator;
-
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -35,24 +31,27 @@ public class CircleGenerator implements ShapeGenerator {
     private class CircleIterator implements Iterator<Point>{
 
         private int x, y;
+        private int maxX, maxY;
 
         private Point p = new Point();
 
         public CircleIterator(){
+            maxX = x0 + diameter;
+            maxY = y0 + diameter;
             x = x0;
             y = y0;
         }
 
         @Override
         public boolean hasNext(){
-            return x != width && x < x0 + diameter;
+            return x != width && x < maxX;
         }
 
         @Override
         public Point next(){
             p.y = y;
             p.x = x;
-            if ( ++y == y0 + diameter || y == height ){
+            if ( ++y == maxY || y == height ){
                 y = y0;
                 x++;
             }

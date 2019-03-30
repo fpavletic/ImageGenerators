@@ -4,7 +4,7 @@ import java.awt.*;
 
 public interface ShapeGenerator extends Iterable<Point> {
 
-    void generateShape(int width, int height, int length);
+    void generateShape(int canvasWidth, int canvasHeight, int size);
 
     void drawShape(Graphics graphics);
 

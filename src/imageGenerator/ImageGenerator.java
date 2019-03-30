@@ -1,7 +1,9 @@
 package imageGenerator;
 
 import shapeGenerators.CircleGenerator;
+import shapeGenerators.EquilateralTriangleGenerator;
 import shapeGenerators.ShapeGenerator;
+import shapeGenerators.TriangleGenerator;
 import util.ImageGeneratorDisplay;
 import util.IntIntToIntArrayBiFunction; //Gotta go fast
 import util.ManhattanDistanceCalculator;
@@ -66,11 +68,10 @@ public class ImageGenerator {
         new Scanner(System.in).nextLine();
         for ( long current = 0; current < iterations; current++ ) {
             double percentDone = current / (double) iterations;
-
-            iteration((int)((1 - Math.sqrt(percentDone)) * max));
+            iteration(1 + (int)((1 - Math.sqrt(percentDone)) * max));
             generatedImageDisplay.repaint();
         }
-        ImageIO.write(generatedImage, "png", new File("./paleCrtica.png"));
+        ImageIO.write(generatedImage, "png", new File("./generatedImage.png"));
         System.out.println("Done!");
 
     }
@@ -97,8 +98,10 @@ public class ImageGenerator {
 
 //        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new BresenhamLineGenerator(), 25);
 //        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new LineGenerator(), 25);
-        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new CircleGenerator(), 50);
-        imgGen.generate(4000000);
+//        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new CircleGenerator(), 50);
+        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new TriangleGenerator(), 15);
+//        ImageGenerator imgGen = new ImageGenerator(new File("./testImg.jpg"), new EquilateralTriangleGenerator(), 25);
+        imgGen.generate(200000);
 
     }
 }
